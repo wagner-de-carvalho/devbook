@@ -14,7 +14,7 @@ func BuscarUsuarios(w http.ResponseWriter, r *http.Request) {
 
 // Busca um usuário no banco de dados
 func BuscarUsuario(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Buscando usuários"))
+	w.Write([]byte("Buscando um usuário"))
 }
 
 // Busca um usuário no banco de dados
