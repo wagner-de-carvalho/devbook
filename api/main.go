@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 func main()  {
-	fmt.Println("Executando API")
+	fmt.Println("Executando API na porta 5000")
 
 	r := router.Gerar()
 
