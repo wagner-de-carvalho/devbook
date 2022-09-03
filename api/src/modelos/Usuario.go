@@ -17,16 +17,16 @@ type Usuario struct {
 }
 
 // Preparar valida os campos de usuário
-func (usuario *Usuario) Preparar() error {
+func (usuario *Usuario) Preparar(etapa string) error {
 	usuario.formatar()
-	if erro := usuario.validar(); erro != nil {
+	if erro := usuario.validar(etapa); erro != nil {
 		return erro
 	}
 	return nil
 }
 
 // Validar valida os campos do usuário
-func (usuario *Usuario) validar() error {
+func (usuario *Usuario) validar(etapa string) error {
 	if usuario.Nome == "" {
 		return errors.New("o nome é obrigatório e não pode estar em branco")
 	}
@@ -35,7 +35,7 @@ func (usuario *Usuario) validar() error {
 		return errors.New("o e-mail é obrigatório e não pode estar em branco")
 	}
 
-	if usuario.Senha == "" {
+	if etapa == "cadastro" && usuario.Senha == "" {
 		return errors.New("a senha é obrigatória e não pode estar em branco")
 	}
 
