@@ -1,6 +1,7 @@
 package modelos
 
 import (
+	"api/src/seguranca"
 	"errors"
 	"strings"
 	"time"
@@ -20,7 +21,10 @@ type Usuario struct {
 
 // Preparar valida os campos de usuário
 func (usuario *Usuario) Preparar(etapa string) error {
-	usuario.formatar()
+	if erro := usuario.formatar(etapa); erro != nil{
+		return erro
+	}
+
 	if erro := usuario.validar(etapa); erro != nil {
 		return erro
 	}
@@ -52,8 +56,19 @@ func (usuario *Usuario) validar(etapa string) error {
 	return nil
 }
 
-func (usuario *Usuario) formatar() {
+// formatar formata campos e adiciona hash
+func (usuario *Usuario) formatar(etapa string) error {
 	usuario.Email = strings.TrimSpace(usuario.Email)
 	usuario.Nick = strings.TrimSpace(usuario.Nick)
 	usuario.Nome = strings.TrimSpace(usuario.Nome)
+
+	if etapa == "cadastro" {
+		senhaComHash, erro := seguranca.Hash(usuario.Senha)
+		if erro != nil {
+			return erro
+		}
+		usuario.Senha = string(senhaComHash)
+	}
+
+	return nil
 }
