@@ -28,19 +28,19 @@ func (usuario *Usuario) Preparar() error {
 // Validar valida os campos do usuário
 func (usuario *Usuario) validar() error {
 	if usuario.Nome == "" {
-		return errors.New("O nome é obrigatório e não pode estar em branco")
+		return errors.New("o nome é obrigatório e não pode estar em branco")
 	}
 
 	if usuario.Email == "" {
-		return errors.New("O e-mail é obrigatório e não pode estar em branco")
+		return errors.New("o e-mail é obrigatório e não pode estar em branco")
 	}
 
 	if usuario.Senha == "" {
-		return errors.New("A senha é obrigatória e não pode estar em branco")
+		return errors.New("a senha é obrigatória e não pode estar em branco")
 	}
 
 	if usuario.Nick == "" {
-		return errors.New("O apelido é obrigatório e não pode estar em branco")
+		return errors.New("o apelido é obrigatório e não pode estar em branco")
 	}
 
 	return nil
