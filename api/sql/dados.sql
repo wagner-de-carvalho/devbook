@@ -22,3 +22,12 @@ values
 (4, 5), 
 (1, 5), 
 (3, 2);
+
+insert into publicacoes (titulo, conteudo, autor_id)
+values
+("Publicação do autor 1", "Esta é a publicação do autor 1", 1),
+("outra Publicação do autor 1", "Esta é outra publicação do autor 1", 1),
+("Publicação do autor 2", "Esta é a publicação do autor 2", 2),
+("Outra Publicação do autor 2", "Esta é outra publicação do autor 2", 2),
+("Publicação do autor 3", "Esta é a publicação do autor 3", 3),
+("OutraPublicação do autor 3", "Esta é outra publicação do autor 3", 3);
