@@ -8,18 +8,19 @@ import (
 
 // Publicacao representa uma publicação feita por um usuario
 type Publicacao struct {
-	ID       uint64    `json:"id,omitempty"`
-	Titulo   string    `json:"titulo,omitempty"`
-	Conteudo string    `json:"conteudo,omitempty"`
-	AutorID  int64     `json:"autorId,omitempty"`
-	Curtidas int64     `json:"curtidas"`
-	CriadaEm time.Time `json:"criadaEm,omitempty"`
+	ID        uint64    `json:"id,omitempty"`
+	Titulo    string    `json:"titulo,omitempty"`
+	Conteudo  string    `json:"conteudo,omitempty"`
+	AutorID   int64     `json:"autorId,omitempty"`
+	AutorNick string     `json:"autorNick,omitempty"`
+	Curtidas  int64     `json:"curtidas"`
+	CriadaEm  time.Time `json:"criadaEm,omitempty"`
 }
 
 // Preparar valida e formata os campos da publicação recebida
 func (publicacao *Publicacao) Preparar() error {
 	publicacao.formatar()
-	
+
 	if erro := publicacao.validar(); erro != nil {
 		return erro
 	}
