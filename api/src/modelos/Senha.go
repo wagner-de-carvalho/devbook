@@ -2,6 +2,6 @@ package modelos
 
 // Senha representa o formato de requisição de alteração de senha
 type Senha struct {
-	Nova string `json:"nova,omitempty"`
-	Atual string `json:"atual,omitempty"`
+	Nova string `json:"nova"`
+	Atual string `json:"atual"`
 }

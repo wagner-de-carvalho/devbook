@@ -3,7 +3,6 @@ package repositorios
 import (
 	"api/src/modelos"
 	"database/sql"
-	"fmt"
 )
 
 // Representa um repositório de usuários
@@ -41,7 +40,6 @@ func (repositorio Usuarios) Criar(usuario modelos.Usuario) (uint64, error) {
 
 // Buscar busca usuários do banco de acordo com o filtro
 func (repositorio Usuarios) Buscar(nomeOuNick string) ([]modelos.Usuario, error) {
-	nomeOuNick = fmt.Sprintf("%%%s%%", nomeOuNick)
 	linhas, erro := repositorio.db.Query(
 		"select id, nome, nick, email, criadoEm from usuarios where nome LIKE ? or nick LIKE ?",
 		nomeOuNick, nomeOuNick,
@@ -262,8 +260,6 @@ func (repositorio Usuarios) BuscarSenha(usuarioID uint64) (string, error) {
 		}
 	}
 
-	fmt.Printf("Senha buscada no banco: %s", usuario.Senha)
-
 	return usuario.Senha, nil
 }
 
@@ -272,7 +268,7 @@ func (repositorio Usuarios) AtualizarSenha(usuarioID uint64, senha string) error
 	statement, erro := repositorio.db.Prepare("update usuarios set senha = ? where id = ?")
 	if erro != nil {
 		return erro
-	}
+	}	
 	defer statement.Close()
 
 	if _, erro = statement.Exec(senha, usuarioID); erro != nil {
