@@ -19,6 +19,7 @@ type Usuario struct {
 	CriadoEm time.Time `json:"criadoEm,omitempty"`
 }
 
+
 // Preparar valida os campos de usuário
 func (usuario *Usuario) Preparar(etapa string) error {
 	if erro := usuario.formatar(etapa); erro != nil{
