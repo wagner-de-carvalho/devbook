@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Rodando Webapp")
+	fmt.Println("Rodando webapp!")
 
 	r := router.Gerar()
 	log.Fatal(http.ListenAndServe(":3000", r))
