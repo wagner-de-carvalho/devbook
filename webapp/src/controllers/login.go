@@ -21,7 +21,7 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	response, erro := http.Post("http://localhost:5000/login", "application/json", bytes.NewBuffer(usuario))
+	response, erro := http.Post("/login", "application/json", bytes.NewBuffer(usuario))
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
 		return
@@ -39,5 +39,5 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-
+	respostas.JSON(w,http.StatusOK, nil)
 }
