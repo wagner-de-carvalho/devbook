@@ -3,6 +3,7 @@ package rotas
 import (
 	"github.com/gorilla/mux"
 	"net/http"
+	"webapp/src/middlewares"
 )
 
 // Rota representa todas as rotas da aplicação web
@@ -19,7 +20,16 @@ func Configurar(router *mux.Router) *mux.Router {
 	rotas = append(rotas, rotasUsuarios...)
 	rotas = append(rotas, rotaPaginaPrincipal)
 	for _, rota := range rotas {
-		router.HandleFunc(rota.URI, rota.Funcao).Methods(rota.Metodo)
+		if rota.RequerAutenticacao {
+			router.HandleFunc(
+				rota.URI,
+				middlewares.Logger(middlewares.Autenticar(rota.Funcao)),
+			).Methods(rota.Metodo)
+		} else {
+			router.HandleFunc(rota.URI,
+				middlewares.Logger(rota.Funcao),
+			).Methods(rota.Metodo)
+		}
 	}
 
 	fileServer := http.FileServer(http.Dir("./assets/"))
