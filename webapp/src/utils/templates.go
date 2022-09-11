@@ -10,6 +10,7 @@ var templates *template.Template
 // CarregarTemplates carrega todos os templates
 func CarregarTemplates() {
 	templates = template.Must(template.ParseGlob("views/*.html"))
+	templates = template.Must(templates.ParseGlob("views/templates/*.html"))
 }
 
 // ExecutarTemplate exibe uma página html na tela
