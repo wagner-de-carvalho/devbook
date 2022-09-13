@@ -1,10 +1,12 @@
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevBook</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">    
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
 
@@ -26,7 +28,7 @@
                     <textarea type="text" required="required" class="form-control" name="conteudo" id="conteudo" placeholder="Conteúdo da publicação"></textarea>
                 </div>
 
-                <button id="criar-publicacao" type="submit" class="btn btn-primary mt-2">
+                <button class="btn btn-primary" type="submit">
                     Publicar
                 </button>
             </form>
@@ -51,5 +53,6 @@
 
 {{ template "scripts" }}
 
+<script src="/assets/js/publicacoes.js"></script>
 </body>
 </html>
