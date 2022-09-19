@@ -1,7 +1,8 @@
-$('#nova-publicacao').on('submit', criarPublicacao);
+// $('#nova-publicacao').on('submit', criarPublicacao);
+$('#botao-publicar').on('click', criarPublicacao);
 
 function criarPublicacao(evento) {
-    evento.PreventDefault();
+    evento.preventDefault();
     $.ajax({
         url: "/publicacoes",
         method: "POST",
