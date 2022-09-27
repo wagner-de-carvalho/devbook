@@ -12,7 +12,9 @@ function fazerLogin(evento) {
         }
     }).done(function() {
         window.location = "/home";
-    }).fail(function() {
+    }).fail(function(erro) {
+        console.log(erro);
+        alert(erro);
         alert("Usuário ou senha inválidos!")
     });
 }
